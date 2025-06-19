@@ -45,7 +45,7 @@
       const today = new Date();
       const diffTime = examDate.getTime() - today.getTime();
       const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
-      document.getElementById('countdown').textContent = '資格考倒數 ' + diffDays + ' 天';
+      document.getElementById('countdown').textContent = '115-1 資格考倒數 ' + diffDays + ' 天';
     });
   </script>
 </head>
@@ -54,7 +54,7 @@
   <div class="max-w-7xl mx-auto px-6 py-10 space-y-10">
     <header class="text-center space-y-4">
       <h1 class="text-4xl font-extrabold tracking-tight">博士資格考筆記中心</h1>
-      <p class="text-sm text-gray-600 dark:text-gray-300"><span id="countdown">資格考倒數計算中...</span></p>
+      <p class="text-sm text-gray-600 dark:text-gray-300"><span id="countdown">115-1學期資格考倒數計算中...</span></p>
       <button onclick="toggleDarkMode()" class="mt-2 px-4 py-1 text-sm rounded bg-white/40 dark:bg-gray-700 backdrop-blur hover:shadow">
         🌗 切換夜間模式
       </button>
@@ -79,12 +79,17 @@
       <a href="./modules/theory/index.html" class="glass rounded-xl p-6 shadow text-center hover:scale-105 transition transform duration-300">
         <div class="text-4xl mb-2 icon-pulse">🧠</div>
         <h2 class="font-bold text-lg">理論彙整</h2>
-        <p class="text-sm text-gray-600 dark:text-gray-300">SDT、COR、SET 與學習理論</p>
+        <p class="text-sm text-gray-600 dark:text-gray-300">SDT、COR、RBV等理論</p>
       </a>
       <a href="./modules/exams/index.html" class="glass rounded-xl p-6 shadow text-center hover:scale-105 transition transform duration-300">
         <div class="text-4xl mb-2 icon-pulse">📄</div>
         <h2 class="font-bold text-lg">歷屆試題</h2>
         <p class="text-sm text-gray-600 dark:text-gray-300">題目整理與解題策略</p>
+      </a>
+      <a href="./modules/exams/index.html" class="glass rounded-xl p-6 shadow text-center hover:scale-105 transition transform duration-300">
+        <div class="text-4xl mb-2 icon-pulse">🧭</div>
+        <h2 class="font-bold text-lg">筆記整理</h2>
+        <p class="text-sm text-gray-600 dark:text-gray-300">連結到onedrive看word版本</p>
       </a>
     </main>
 
