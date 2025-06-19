@@ -3,13 +3,63 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>statistics 筆記</title>
+  <title>統計學筆記 | 資格考模組</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = { darkMode: 'class' };
+    function toggleDarkMode() {
+      document.documentElement.classList.toggle('dark');
+    }
+  </script>
+  <style>
+    .glass {
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    .glass:hover {
+      background: rgba(255, 255, 255, 0.25);
+    }
+  </style>
 </head>
-<body class="bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-100 px-4 py-6">
-  <div class="max-w-4xl mx-auto">
-    <h1 class="text-3xl font-bold mb-4">📘 Statistics 筆記模組</h1>
-    <p>這是 <strong>statistics</strong> 模組的初始頁面。請在此撰寫章節或連結其他子頁面。</p>
+<body class="bg-gradient-to-tr from-blue-100 to-purple-200 dark:from-slate-800 dark:to-slate-900 text-gray-800 dark:text-gray-100 px-4 py-6">
+  <div class="max-w-5xl mx-auto space-y-6">
+    <header class="flex items-center justify-between mb-4">
+      <h1 class="text-3xl font-extrabold">📘 統計學筆記模組</h1>
+      <button onclick="toggleDarkMode()" class="text-sm px-3 py-1 rounded bg-white/40 dark:bg-gray-700 hover:shadow">🌗 夜間模式</button>
+    </header>
+
+    <a href="../../index.html" class="inline-block text-sm text-blue-700 dark:text-blue-300 hover:underline">← 回首頁</a>
+
+    <section class="space-y-4">
+      <div class="glass p-6 rounded-xl shadow-md">
+        <h2 class="text-xl font-semibold mb-2">🧾 描述統計 Descriptive Statistics</h2>
+        <ul class="list-disc list-inside text-sm space-y-1">
+          <li><strong>平均數 Mean：</strong> 數據加總後除以樣本數。</li>
+          <li><strong>中位數 Median：</strong> 排序後的中間值，適合偏態分布。</li>
+          <li><strong>標準差 SD：</strong> 衡量數據離均差的平均程度。</li>
+        </ul>
+      </div>
+
+      <div class="glass p-6 rounded-xl shadow-md">
+        <h2 class="text-xl font-semibold mb-2">🧪 推論統計 Inferential Statistics</h2>
+        <ul class="list-disc list-inside text-sm space-y-1">
+          <li><strong>假設檢定 Hypothesis Testing：</strong> 評估樣本與母體是否存在顯著差異。</li>
+          <li><strong>p 值：</strong> 當 H₀ 成立時，觀察到現有樣本資料的機率。</li>
+          <li><strong>信賴區間 CI：</strong> 母體參數落於區間的機率（通常為 95%）。</li>
+        </ul>
+      </div>
+
+      <div class="glass p-6 rounded-xl shadow-md">
+        <h2 class="text-xl font-semibold mb-2">📊 常見檢定 Common Tests</h2>
+        <ul class="list-disc list-inside text-sm space-y-1">
+          <li><strong>t 檢定：</strong> 用於兩組平均數比較。</li>
+          <li><strong>ANOVA：</strong> 比較三組以上平均差異。</li>
+          <li><strong>卡方檢定：</strong> 類別變數的分布檢定。</li>
+        </ul>
+      </div>
+    </section>
   </div>
 </body>
 </html>
