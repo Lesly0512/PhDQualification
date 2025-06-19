@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>博士資格考筆記中心</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+    };
+    function toggleDarkMode() {
+      document.documentElement.classList.toggle('dark');
+    }
+  </script>
+  <style>
+    body {
+      background: linear-gradient(135deg, #e0eafc, #cfdef3);
+    }
+    .dark body {
+      background: linear-gradient(135deg, #1e293b, #334155);
+    }
+    .glass {
+      background: rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      transition: all 0.3s ease-in-out;
+    }
+    .glass:hover {
+      background: rgba(255, 255, 255, 0.35);
+      transform: translateY(-2px);
+    }
+    .icon-pulse {
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.15); opacity: 0.85; }
+    }
+  </style>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const examDate = new Date('2026-11-20');
+      const today = new Date();
+      const diffTime = examDate.getTime() - today.getTime();
+      const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+      document.getElementById('countdown').textContent = '資格考倒數 ' + diffDays + ' 天';
+    });
+  </script>
+</head>
+<body class="dark:bg-gray-900 dark:text-gray-100 text-gray-800 transition-all">
+
+  <div class="max-w-7xl mx-auto px-6 py-10 space-y-10">
+    <header class="text-center space-y-4">
+      <h1 class="text-4xl font-extrabold tracking-tight">博士資格考筆記中心</h1>
+      <p class="text-sm text-gray-600 dark:text-gray-300"><span id="countdown">資格考倒數計算中...</span></p>
+      <button onclick="toggleDarkMode()" class="mt-2 px-4 py-1 text-sm rounded bg-white/40 dark:bg-gray-700 backdrop-blur hover:shadow">
+        🌗 切換夜間模式
+      </button>
+    </header>
+
+    <main class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+      <a href="./modules/statistics/index.html" class="glass rounded-xl p-6 shadow text-center hover:scale-105 transition transform duration-300">
+        <div class="text-4xl mb-2 icon-pulse">📐</div>
+        <h2 class="font-bold text-lg">統計學</h2>
+        <p class="text-sm text-gray-600 dark:text-gray-300">描述統計、推論統計與檢定方法</p>
+      </a>
+      <a href="./modules/methods/index.html" class="glass rounded-xl p-6 shadow text-center hover:scale-105 transition transform duration-300">
+        <div class="text-4xl mb-2 icon-pulse">🔍</div>
+        <h2 class="font-bold text-lg">研究方法</h2>
+        <p class="text-sm text-gray-600 dark:text-gray-300">研究設計、抽樣、變項操作</p>
+      </a>
+      <a href="./modules/hr/index.html" class="glass rounded-xl p-6 shadow text-center hover:scale-105 transition transform duration-300">
+        <div class="text-4xl mb-2 icon-pulse">👥</div>
+        <h2 class="font-bold text-lg">人資專業</h2>
+        <p class="text-sm text-gray-600 dark:text-gray-300">選育用留、績效、組織文化</p>
+      </a>
+      <a href="./modules/theory/index.html" class="glass rounded-xl p-6 shadow text-center hover:scale-105 transition transform duration-300">
+        <div class="text-4xl mb-2 icon-pulse">🧠</div>
+        <h2 class="font-bold text-lg">理論彙整</h2>
+        <p class="text-sm text-gray-600 dark:text-gray-300">SDT、COR、SET 與學習理論</p>
+      </a>
+      <a href="./modules/exams/index.html" class="glass rounded-xl p-6 shadow text-center hover:scale-105 transition transform duration-300">
+        <div class="text-4xl mb-2 icon-pulse">📄</div>
+        <h2 class="font-bold text-lg">歷屆試題</h2>
+        <p class="text-sm text-gray-600 dark:text-gray-300">題目整理與解題策略</p>
+      </a>
+    </main>
+
+    <footer class="text-center text-xs text-gray-500 dark:text-gray-400 space-y-2">
+      <p>由 GitHub Pages 自動部署．設計與內容持續進化中</p>
+      <p>
+        ✉️ <a href="mailto:your.email@example.com" class="underline hover:text-indigo-600">聯絡我</a> ｜
+        🗂 <a href="https://github.com/yourusername/qualifying-exam-notes" class="underline hover:text-indigo-600">GitHub Repo</a>
+      </p>
+    </footer>
+  </div>
+</body>
+</html>
