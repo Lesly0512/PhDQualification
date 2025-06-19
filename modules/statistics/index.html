@@ -24,10 +24,6 @@
   </style>
 
   <script>
-    function toggleSection(id) {
-      const section = document.getElementById(id);
-      section.classList.toggle('hidden');
-    }
     function scrollToTop() {
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
@@ -43,11 +39,7 @@
     <a href="../../index.html" class="inline-block text-sm text-blue-700 dark:text-blue-300 hover:underline">← 回首頁</a>
 
     <section class="space-y-4">
-    <button onclick="scrollToTop()" class="fixed bottom-6 right-6 bg-white/50 dark:bg-gray-700 rounded-full p-3 shadow hover:shadow-lg">
-      ⬆️
-    </button>
-    
-      <div class="glass p-6 rounded-xl shadow-md cursor-pointer" onclick="toggleSection('section1')"><h2 class="text-xl font-semibold mb-2">🧾 描述統計 Descriptive Statistics</h2></div><div id="section1" class="glass p-6 rounded-xl shadow-md hidden">
+      <div class="glass p-6 rounded-xl shadow-md">
         <h2 class="text-xl font-semibold mb-2">🧾 描述統計 Descriptive Statistics</h2>
         <ul class="list-disc list-inside text-sm space-y-1">
           <li><strong>平均數 Mean：</strong> 數據加總後除以樣本數。</li>
@@ -56,8 +48,8 @@
         </ul>
       </div>
 
-      <div class="glass p-6 rounded-xl shadow-md cursor-pointer" onclick="toggleSection('section1')"><h2 class="text-xl font-semibold mb-2">🧾 描述統計 Descriptive Statistics</h2></div><div id="section1" class="glass p-6 rounded-xl shadow-md hidden">
-        </div><div class="glass p-6 rounded-xl shadow-md cursor-pointer" onclick="toggleSection('section2')"><h2 class="text-xl font-semibold mb-2">🧪 推論統計 Inferential Statistics</h2></div><div id="section2" class="glass p-6 rounded-xl shadow-md hidden">
+      <div class="glass p-6 rounded-xl shadow-md">
+        <h2 class="text-xl font-semibold mb-2">🧪 推論統計 Inferential Statistics</h2>
         <ul class="list-disc list-inside text-sm space-y-1">
           <li><strong>假設檢定 Hypothesis Testing：</strong> 評估樣本與母體是否存在顯著差異。</li>
           <li><strong>p 值：</strong> 當 H₀ 成立時，觀察到現有樣本資料的機率。</li>
@@ -65,17 +57,19 @@
         </ul>
       </div>
 
-      <div class="glass p-6 rounded-xl shadow-md cursor-pointer" onclick="toggleSection('section1')"><h2 class="text-xl font-semibold mb-2">🧾 描述統計 Descriptive Statistics</h2></div><div id="section1" class="glass p-6 rounded-xl shadow-md hidden">
-        </div><div class="glass p-6 rounded-xl shadow-md cursor-pointer" onclick="toggleSection('section3')"><h2 class="text-xl font-semibold mb-2">📊 常見檢定 Common Tests</h2></div><div id="section3" class="glass p-6 rounded-xl shadow-md hidden">
+      <div class="glass p-6 rounded-xl shadow-md">
+        <h2 class="text-xl font-semibold mb-2">📊 常見檢定 Common Tests</h2>
         <ul class="list-disc list-inside text-sm space-y-1">
           <li><strong>t 檢定：</strong> 用於兩組平均數比較。</li>
           <li><strong>ANOVA：</strong> 比較三組以上平均差異。</li>
           <li><strong>卡方檢定：</strong> 類別變數的分布檢定。</li>
         </ul>
       </div>
-    </section>
+    
+    <button onclick="scrollToTop()" class="fixed bottom-6 right-6 bg-white/50 dark:bg-gray-700 rounded-full p-3 shadow hover:shadow-lg">
+      ⬆️
+    </button>
+  </section>
   </div>
 </body>
 </html>
-
-</div>
