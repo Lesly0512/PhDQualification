@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>歷屆試題筆記 | 資格考</title>
+  <title>歷屆試題詳解 | 資格考</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = { darkMode: 'class' };
@@ -13,14 +13,30 @@
   </script>
   <style>
     .glass {
-      background: rgba(255, 255, 255, 0.15);
+      background: rgba(255, 255, 255, 0.25);
       backdrop-filter: blur(12px);
       -webkit-backdrop-filter: blur(12px);
       border: 1px solid rgba(255, 255, 255, 0.1);
+      transition: all 0.3s ease;
     }
     .glass:hover {
-      background: rgba(255, 255, 255, 0.25);
+      background: rgba(255, 255, 255, 0.35);
+      transform: translateY(-2px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.1);
     }
+    .badge {
+      font-size: 0.75rem;
+      padding: 0.25rem 0.5rem;
+      border-radius: 9999px;
+      font-weight: 600;
+    }
+    .badge-stats { background-color: #dbeafe; color: #1e40af; } /* Blue */
+    .badge-methods { background-color: #ffedd5; color: #9a3412; } /* Orange */
+    .badge-hr { background-color: #d1fae5; color: #065f46; } /* Green */
+    
+    .dark .badge-stats { background-color: #1e3a8a; color: #dbeafe; }
+    .dark .badge-methods { background-color: #7c2d12; color: #ffedd5; }
+    .dark .badge-hr { background-color: #064e3b; color: #d1fae5; }
   </style>
 
   <script>
@@ -29,27 +45,82 @@
     }
   </script>
 </head>
-<body class="bg-gradient-to-tr from-blue-100 to-purple-200 dark:from-slate-800 dark:to-slate-900 text-gray-800 dark:text-gray-100 px-4 py-6">
+<body class="bg-gradient-to-tr from-blue-100 to-purple-200 dark:from-slate-800 dark:to-slate-900 text-gray-800 dark:text-gray-100 px-4 py-6 min-h-screen">
   <div class="max-w-5xl mx-auto space-y-6">
+    
+    <!-- Header -->
     <header class="flex items-center justify-between mb-4">
-      <h1 class="text-3xl font-extrabold">📘 歷屆試題筆記</h1>
-      <button onclick="toggleDarkMode()" class="text-sm px-3 py-1 rounded bg-white/40 dark:bg-gray-700 hover:shadow">🌗 夜間模式</button>
+      <div class="flex items-center gap-3">
+        <span class="text-3xl">📄</span>
+        <h1 class="text-3xl font-extrabold">歷屆試題詳解</h1>
+      </div>
+      <button onclick="toggleDarkMode()" class="text-sm px-3 py-1 rounded bg-white/40 dark:bg-gray-700 hover:shadow transition">🌗 夜間模式</button>
     </header>
 
-    <a href="../../index.html" class="inline-block text-sm text-blue-700 dark:text-blue-300 hover:underline">← 回首頁</a>
+    <!-- Breadcrumb -->
+    <a href="../../index.html" class="inline-flex items-center text-sm text-blue-700 dark:text-blue-300 hover:underline transition">
+      <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
+      回首頁
+    </a>
 
-    <section class="space-y-4">
-      <div class="glass p-6 rounded-xl shadow-md">
-        <h2 class="text-xl font-semibold mb-2">🚧 本區施工中</h2>
-        <ul class="list-disc list-inside text-sm space-y-1">
-          <li><strong>🚧🚧🚧</strong> 🚧🚧🚧</li>
-        </ul>
+    <!-- Search/Filter (Visual Only for now) -->
+    <div class="flex gap-2 overflow-x-auto pb-2">
+      <button class="px-4 py-2 rounded-full bg-white/50 dark:bg-gray-700 font-bold text-sm shadow-sm border border-transparent hover:bg-white/80 transition">全部</button>
+      <button class="px-4 py-2 rounded-full bg-blue-100/50 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 font-bold text-sm hover:bg-blue-100 transition">統計學</button>
+      <button class="px-4 py-2 rounded-full bg-orange-100/50 dark:bg-orange-900/30 text-orange-700 dark:text-orange-300 font-bold text-sm hover:bg-orange-100 transition">研究方法</button>
+    </div>
+
+    <!-- Exam List -->
+    <section class="grid gap-4">
+
+      <!-- 113-2 貝葉斯模型 (連結到新檔案) -->
+      <a href="113_2_stats_bayesian.html" class="glass p-6 rounded-xl cursor-pointer group block">
+        <div class="flex justify-between items-start mb-2">
+          <div class="flex gap-2">
+            <span class="badge badge-stats">統計學</span>
+            <span class="badge bg-red-100 text-red-700 dark:bg-red-900 dark:text-red-200">113-2 最新</span>
+          </div>
+          <span class="text-xs font-mono text-gray-500 dark:text-gray-400">2025.03</span>
+        </div>
+        <h2 class="text-xl font-bold mb-2 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition">貝葉斯模型 (Bayesian Model) 在教育數據的應用</h2>
+        <p class="text-sm text-gray-600 dark:text-gray-300 line-clamp-2">
+          情境：利用先驗機率(70%)與新學生的學習時數數據，透過貝葉斯公式更新通過率預測。包含互動式模擬器與決策分析。
+        </p>
+      </a>
+
+      <!-- 113-2 交叉延宕 (範例 Placeholder) -->
+      <div class="glass p-6 rounded-xl opacity-60">
+        <div class="flex justify-between items-start mb-2">
+          <div class="flex gap-2">
+            <span class="badge badge-methods">研究方法</span>
+            <span class="badge bg-gray-200 text-gray-600 dark:bg-gray-700 dark:text-gray-300">113-2</span>
+          </div>
+        </div>
+        <h2 class="text-xl font-bold mb-2">交叉延宕設計 (Cross-lagged Design)</h2>
+        <p class="text-sm text-gray-600 dark:text-gray-300">
+          (擬答撰寫中...) 解決縱貫性研究中互為因果的問題，比較 X1->Y2 與 Y1->X2 的路徑係數。
+        </p>
       </div>
+
+      <!-- 111-1 所羅門四組 (範例 Placeholder) -->
+      <div class="glass p-6 rounded-xl opacity-60">
+        <div class="flex justify-between items-start mb-2">
+          <div class="flex gap-2">
+            <span class="badge badge-methods">實驗設計</span>
+            <span class="badge bg-gray-200 text-gray-600 dark:bg-gray-700 dark:text-gray-300">111-1</span>
+          </div>
+        </div>
+        <h2 class="text-xl font-bold mb-2">所羅門四組設計 (Solomon Four-Group)</h2>
+        <p class="text-sm text-gray-600 dark:text-gray-300">
+          (擬答撰寫中...) 檢驗前測效應與前測敏感化，最嚴謹的真實驗設計。
+        </p>
+      </div>
+
+    </section>
     
-    <button onclick="scrollToTop()" class="fixed bottom-6 right-6 bg-white/50 dark:bg-gray-700 rounded-full p-3 shadow hover:shadow-lg">
+    <button onclick="scrollToTop()" class="fixed bottom-6 right-6 bg-white/50 dark:bg-gray-700 rounded-full p-3 shadow hover:shadow-lg backdrop-blur">
       ⬆️
     </button>
-  </section>
   </div>
 </body>
 </html>
