@@ -2,66 +2,59 @@
 <html lang="zh-Hant">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>人資專業筆記 | 資格考</title>
+  <title>人資專業筆記 | 博士資格考</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = { darkMode: 'class' };
-    function toggleDarkMode() {
-      document.documentElement.classList.toggle('dark');
-    }
+    function toggleDarkMode() { document.documentElement.classList.toggle('dark'); }
   </script>
   <style>
     .glass {
-      background: rgba(255, 255, 255, 0.15);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      border: 1px solid rgba(255, 255, 255, 0.1);
+      background: rgba(255, 255, 255, 0.65);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.5);
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
     }
-    .glass:hover {
-      background: rgba(255, 255, 255, 0.25);
-    }
+    .dark .glass { background: rgba(30, 41, 59, 0.7); border: 1px solid rgba(255, 255, 255, 0.1); }
+    .glass:hover { transform: translateY(-4px); background: rgba(255, 255, 255, 0.85); }
+    .badge { font-size: 0.75rem; padding: 0.25rem 0.75rem; border-radius: 9999px; font-weight: 600; }
+    .badge-hr { background-color: #d1fae5; color: #065f46; }
+    .dark .badge-hr { background-color: #064e3b; color: #d1fae5; }
   </style>
-
-  <script>
-    function scrollToTop() {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-  </script>
 </head>
-<body class="bg-gradient-to-tr from-blue-100 to-purple-200 dark:from-slate-800 dark:to-slate-900 text-gray-800 dark:text-gray-100 px-4 py-6">
-  <div class="max-w-5xl mx-auto space-y-6">
-    <header class="flex items-center justify-between mb-4">
-      <h1 class="text-3xl font-extrabold">📘 人資專業筆記</h1>
-      <button onclick="toggleDarkMode()" class="text-sm px-3 py-1 rounded bg-white/40 dark:bg-gray-700 hover:shadow">🌗 夜間模式</button>
+<body class="bg-gradient-to-tr from-emerald-100 via-teal-100 to-cyan-200 dark:from-slate-900 dark:to-teal-950 text-gray-800 dark:text-gray-100 px-4 py-8 min-h-screen">
+  <div class="max-w-5xl mx-auto space-y-8">
+    <header class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+      <div class="flex items-center gap-4">
+        <div class="p-3 bg-white/50 dark:bg-slate-700/50 rounded-2xl shadow-sm backdrop-blur-sm"><span class="text-4xl">👥</span></div>
+        <div>
+          <h1 class="text-3xl font-extrabold tracking-tight">人資專業筆記</h1>
+          <p class="text-sm text-slate-600 dark:text-slate-400 font-medium mt-1">Human Resource Development</p>
+        </div>
+      </div>
+      <button onclick="toggleDarkMode()" class="text-sm font-medium px-4 py-2 rounded-full bg-white/40 dark:bg-slate-700/40 border border-white/20 shadow-sm">🌗 夜間模式</button>
     </header>
 
-    <a href="../../index.html" class="inline-block text-sm text-blue-700 dark:text-blue-300 hover:underline">← 回首頁</a>
+    <nav class="flex text-sm font-medium text-slate-500 dark:text-slate-400">
+      <a href="../../index.html" class="hover:text-emerald-600 transition flex items-center gap-1">首頁</a>
+      <span class="mx-2 opacity-50">/</span><span>人資專業</span>
+    </nav>
 
-    <section class="space-y-4">
-      
-      <div class="glass p-6 rounded-xl shadow-md">
-        <h2 class="text-xl font-semibold mb-2">📊 這是測試資料 Common Tests</h2>
-        <ul class="list-disc list-inside text-sm space-y-1">
-          <li><strong>這是測試：</strong> 用於兩組平均數比較。</li>
-          <li><strong>ANOVA：</strong> 比較三組以上平均差異。</li>
-          <li><strong>卡方檢定：</strong> 類別變數的分布檢定。</li>
-        </ul>
+    <section class="grid md:grid-cols-2 gap-6">
+      <div class="glass p-6 rounded-2xl group cursor-pointer">
+        <div class="flex items-center gap-3 mb-4"><span class="badge badge-hr">組織行為</span></div>
+        <h2 class="text-xl font-bold mb-3 group-hover:text-emerald-600 transition">組織文化與氣候</h2>
+        <p class="text-sm text-slate-600 dark:text-slate-300">Schein 的文化層次模型：人造物、價值觀、基本假設。</p>
       </div>
 
-      <div class="glass p-6 rounded-xl shadow-md">
-        <h2 class="text-xl font-semibold mb-2">📊 這是測試資料2 Common Tests</h2>
-        <ul class="list-disc list-inside text-sm space-y-1">
-          <li><strong>這是測試：</strong> 用於兩組平均數比較。</li>
-          <li><strong>ANOVA：</strong> 比較三組以上平均差異。</li>
-          <li><strong>卡方檢定：</strong> 類別變數的分布檢定。</li>
-        </ul>
+      <div class="glass p-6 rounded-2xl group cursor-pointer">
+        <div class="flex items-center gap-3 mb-4"><span class="badge badge-hr">教育訓練</span></div>
+        <h2 class="text-xl font-bold mb-3 group-hover:text-emerald-600 transition">TTQS 與訓練評估</h2>
+        <p class="text-sm text-slate-600 dark:text-slate-300">Kirkpatrick 四層次評估模型：反應、學習、行為、結果。</p>
       </div>
-    
-    <button onclick="scrollToTop()" class="fixed bottom-6 right-6 bg-white/50 dark:bg-gray-700 rounded-full p-3 shadow hover:shadow-lg">
-      ⬆️
-    </button>
-  </section>
+    </section>
   </div>
 </body>
 </html>
