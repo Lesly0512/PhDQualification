@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>研究方法筆記 | 資格考</title>
+  <title>研究方法筆記 | 博士資格考</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = { darkMode: 'class' };
@@ -13,70 +13,117 @@
   </script>
   <style>
     .glass {
-      background: rgba(255, 255, 255, 0.15);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
+      background: rgba(255, 255, 255, 0.65);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.5);
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .dark .glass {
+      background: rgba(30, 41, 59, 0.7);
       border: 1px solid rgba(255, 255, 255, 0.1);
     }
     .glass:hover {
-      background: rgba(255, 255, 255, 0.25);
+      transform: translateY(-4px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+      background: rgba(255, 255, 255, 0.85);
     }
+    
+    .badge {
+      font-size: 0.75rem; padding: 0.25rem 0.75rem; border-radius: 9999px; font-weight: 600;
+    }
+    .badge-quant { background-color: #dbeafe; color: #1e40af; } /* Blue */
+    .badge-qual { background-color: #fef3c7; color: #92400e; } /* Amber */
+    .badge-mixed { background-color: #d1fae5; color: #065f46; } /* Green */
+    .dark .badge-quant { background-color: #1e3a8a; color: #dbeafe; }
+    .dark .badge-qual { background-color: #78350f; color: #fef3c7; }
+    .dark .badge-mixed { background-color: #064e3b; color: #d1fae5; }
   </style>
-
-  <script>
-    function scrollToTop() {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-  </script>
 </head>
-<body class="bg-gradient-to-tr from-blue-100 to-purple-200 dark:from-slate-800 dark:to-slate-900 text-gray-800 dark:text-gray-100 px-4 py-6">
-  <div class="max-w-5xl mx-auto space-y-6">
-    <header class="flex items-center justify-between mb-4">
-      <h1 class="text-3xl font-extrabold">📘 研究方法筆記</h1>
-      <button onclick="toggleDarkMode()" class="text-sm px-3 py-1 rounded bg-white/40 dark:bg-gray-700 hover:shadow">🌗 夜間模式</button>
+<body class="bg-gradient-to-tr from-cyan-100 via-blue-100 to-indigo-200 dark:from-slate-800 dark:via-slate-900 dark:to-cyan-950 text-gray-800 dark:text-gray-100 px-4 py-8 min-h-screen">
+  <div class="max-w-5xl mx-auto space-y-8">
+    
+    <!-- Header -->
+    <header class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+      <div class="flex items-center gap-4">
+        <div class="p-3 bg-white/50 dark:bg-slate-700/50 rounded-2xl shadow-sm backdrop-blur-sm">
+          <span class="text-4xl">🔍</span>
+        </div>
+        <div>
+          <h1 class="text-3xl font-extrabold tracking-tight">研究方法筆記</h1>
+          <p class="text-sm text-slate-600 dark:text-slate-400 font-medium mt-1">Research Methods & Design</p>
+        </div>
+      </div>
+      <button onclick="toggleDarkMode()" class="text-sm font-medium px-4 py-2 rounded-full bg-white/40 dark:bg-slate-700/40 hover:bg-white/60 backdrop-blur transition border border-white/20 shadow-sm">
+        🌗 夜間模式
+      </button>
     </header>
 
-    <a href="../../index.html" class="inline-block text-sm text-blue-700 dark:text-blue-300 hover:underline">← 回首頁</a>
+    <!-- Nav -->
+    <nav class="flex text-sm font-medium text-slate-500 dark:text-slate-400">
+      <a href="../../index.html" class="hover:text-cyan-600 dark:hover:text-cyan-400 transition flex items-center gap-1">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg>
+        首頁
+      </a>
+      <span class="mx-2 opacity-50">/</span>
+      <span class="text-slate-800 dark:text-slate-200">研究方法</span>
+    </nav>
 
-    <section class="space-y-4">
+    <!-- Content Grid -->
+    <section class="grid md:grid-cols-2 gap-6">
 
-      <h2 class="text-xl font-semibold mb-2">以王文科與王智弘的教育研究法架構為主。</h2>
-      
-      <div class="glass p-6 rounded-xl shadow-md">
-        <h2 class="text-xl font-semibold mb-2">🏫 教育研究概述</h2>
-        <ul class="list-disc list-inside text-sm space-y-1">
-          <li><strong>人類知識的來源：</strong>根據經驗(experience)、訴諸權威(authority)、演繹推理(deductive reasoning)、歸納推理(inductive reasoning)最後到科學方法(scientific approach)。</li>
-          <li>
-            <strong>科學方法的性質：</strong>
-            <ol class="list-decimal list-inside ml-6 mt-1 space-y-1">
-            <li><strong>目標：</strong> 探索、描述、預測、控制、解釋。</li>
-            <li><strong>理論：</strong>
-            <ol class="list-[lower-roman] list-inside ml-6 mt-1 space-y-1">
-                <li> 理論是包括經界定且有交互關聯構念在內的一組命題。</li>
-                <li> 理論描述的一組變項之間的交互關係，以對由變項所描述的現象，提出一種系統的觀點。</li>
-                <li> 理論在於解釋現象。</li>
-            </ol>
-            </li>
-            <li><strong>限制：</strong> 研究題材複雜、直接的觀察困難、精確地複製不易、觀察者與受試者的交互作用、控制實驗的困難、測量工具的問題、倫理與法規上的考量。</li>
-           </ol>
-           </li>
-          <li><strong>教育研究的意義與問題：</strong></li>
+      <!-- 量化研究 -->
+      <div class="glass p-6 rounded-2xl group cursor-pointer relative overflow-hidden">
+        <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition">
+          <span class="text-6xl">🔢</span>
+        </div>
+        <div class="flex items-center gap-3 mb-4">
+          <span class="badge badge-quant">量化研究</span>
+        </div>
+        <h2 class="text-xl font-bold mb-3 group-hover:text-cyan-600 dark:group-hover:text-cyan-400 transition">實驗與調查設計</h2>
+        <ul class="space-y-2 text-sm text-slate-600 dark:text-slate-300">
+          <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-blue-400"></span>實驗設計 (Experimental Design)</li>
+          <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-blue-400"></span>準實驗設計 (Quasi-experimental)</li>
+          <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-blue-400"></span>問卷調查法 (Survey)</li>
         </ul>
       </div>
 
-      <div class="glass p-6 rounded-xl shadow-md">
-        <h2 class="text-xl font-semibold mb-2">📊 這是測試資料2 Common Tests</h2>
-        <ul class="list-disc list-inside text-sm space-y-1">
-          <li><strong>這是測試：</strong> 用於兩組平均數比較。</li>
-          <li><strong>ANOVA：</strong> 比較三組以上平均差異。</li>
-          <li><strong>卡方檢定：</strong> 類別變數的分布檢定。</li>
+      <!-- 質性研究 -->
+      <div class="glass p-6 rounded-2xl group cursor-pointer relative overflow-hidden">
+        <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition">
+          <span class="text-6xl">📝</span>
+        </div>
+        <div class="flex items-center gap-3 mb-4">
+          <span class="badge badge-qual">質性研究</span>
+        </div>
+        <h2 class="text-xl font-bold mb-3 group-hover:text-cyan-600 dark:group-hover:text-cyan-400 transition">訪談與觀察</h2>
+        <ul class="space-y-2 text-sm text-slate-600 dark:text-slate-300">
+          <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-amber-400"></span>個案研究 (Case Study)</li>
+          <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-amber-400"></span>現象學 (Phenomenology)</li>
+          <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-amber-400"></span>扎根理論 (Grounded Theory)</li>
         </ul>
       </div>
-    
-    <button onclick="scrollToTop()" class="fixed bottom-6 right-6 bg-white/50 dark:bg-gray-700 rounded-full p-3 shadow hover:shadow-lg">
+
+      <!-- 研究倫理 -->
+      <div class="glass p-6 rounded-2xl group cursor-pointer relative overflow-hidden md:col-span-2">
+        <div class="flex items-center gap-3 mb-4">
+          <span class="badge badge-mixed">學術基礎</span>
+        </div>
+        <h2 class="text-xl font-bold mb-3">🏫 教育研究概述與倫理</h2>
+        <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed mb-4">
+          根據王文科與王智弘的教育研究法架構。人類知識來源包含經驗、權威、演繹、歸納至科學方法。
+        </p>
+        <div class="bg-white/40 dark:bg-slate-800/40 p-4 rounded-xl text-sm">
+          <strong>科學方法的五大目標：</strong>探索、描述、預測、控制、解釋。
+        </div>
+      </div>
+
+    </section>
+
+    <button onclick="window.scrollTo({top:0, behavior: 'smooth'})" class="fixed bottom-8 right-8 bg-white/80 dark:bg-slate-700/80 p-3 rounded-full shadow-lg backdrop-blur hover:scale-110 transition z-50">
       ⬆️
     </button>
-  </section>
   </div>
 </body>
 </html>
