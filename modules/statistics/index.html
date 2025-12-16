@@ -3,91 +3,200 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>統計學筆記 | 資格考</title>
+  <title>統計學筆記 | 博士資格考</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <!-- 引入 MathJax 支援數學公式顯示 -->
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
   <script>
     tailwind.config = { darkMode: 'class' };
     function toggleDarkMode() {
       document.documentElement.classList.toggle('dark');
     }
+    // 簡單的客戶端過濾功能
+    function filterContent(category) {
+      const cards = document.querySelectorAll('.note-card');
+      const buttons = document.querySelectorAll('.filter-btn');
+      
+      // 更新按鈕狀態
+      buttons.forEach(btn => {
+        if(btn.dataset.filter === category) {
+          btn.classList.add('bg-blue-100', 'text-blue-700', 'dark:bg-blue-900', 'dark:text-blue-300');
+          btn.classList.remove('bg-white/50', 'dark:bg-gray-700', 'text-gray-600', 'dark:text-gray-300');
+        } else {
+          btn.classList.remove('bg-blue-100', 'text-blue-700', 'dark:bg-blue-900', 'dark:text-blue-300');
+          btn.classList.add('bg-white/50', 'dark:bg-gray-700', 'text-gray-600', 'dark:text-gray-300');
+        }
+      });
+
+      // 過濾卡片
+      cards.forEach(card => {
+        if (category === 'all' || card.dataset.category === category) {
+          card.classList.remove('hidden');
+          setTimeout(() => card.classList.remove('opacity-0', 'translate-y-4'), 50);
+        } else {
+          card.classList.add('opacity-0', 'translate-y-4');
+          setTimeout(() => card.classList.add('hidden'), 300);
+        }
+      });
+    }
   </script>
   <style>
+    /* 升級版毛玻璃特效 */
     .glass {
-      background: rgba(255, 255, 255, 0.15);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
+      background: rgba(255, 255, 255, 0.65);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.5);
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .dark .glass {
+      background: rgba(30, 41, 59, 0.7);
       border: 1px solid rgba(255, 255, 255, 0.1);
     }
     .glass:hover {
-      background: rgba(255, 255, 255, 0.25);
+      transform: translateY(-4px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+      background: rgba(255, 255, 255, 0.85);
     }
-  </style>
+    .dark .glass:hover {
+      background: rgba(30, 41, 59, 0.9);
+    }
+    
+    /* 標籤樣式 */
+    .badge {
+      font-size: 0.75rem;
+      padding: 0.25rem 0.75rem;
+      border-radius: 9999px;
+      font-weight: 600;
+      letter-spacing: 0.025em;
+    }
+    .badge-core { background-color: #dbeafe; color: #1e40af; }     /* 藍色 */
+    .badge-advance { background-color: #fce7f3; color: #9d174d; }  /* 粉紅 */
+    .badge-tool { background-color: #d1fae5; color: #065f46; }     /* 綠色 */
 
-  <script>
-    function scrollToTop() {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-  </script>
+    .dark .badge-core { background-color: #1e3a8a; color: #dbeafe; }
+    .dark .badge-advance { background-color: #831843; color: #fce7f3; }
+    .dark .badge-tool { background-color: #064e3b; color: #d1fae5; }
+  </style>
 </head>
-<body class="bg-gradient-to-tr from-blue-100 to-purple-200 dark:from-slate-800 dark:to-slate-900 text-gray-800 dark:text-gray-100 px-4 py-6">
-  <div class="max-w-5xl mx-auto space-y-6">
-    <header class="flex items-center justify-between mb-4">
-      <h1 class="text-3xl font-extrabold">📘 統計學筆記</h1>
-      <button onclick="toggleDarkMode()" class="text-sm px-3 py-1 rounded bg-white/40 dark:bg-gray-700 hover:shadow">🌗 夜間模式</button>
+<body class="bg-gradient-to-tr from-blue-100 via-indigo-100 to-purple-200 dark:from-slate-800 dark:via-slate-900 dark:to-slate-950 text-gray-800 dark:text-gray-100 px-4 py-8 min-h-screen">
+  <div class="max-w-5xl mx-auto space-y-8">
+    
+    <!-- 頁首與導航 -->
+    <header class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+      <div class="flex items-center gap-4">
+        <div class="p-3 bg-white/50 dark:bg-slate-700/50 rounded-2xl shadow-sm backdrop-blur-sm">
+          <span class="text-4xl">📐</span>
+        </div>
+        <div>
+          <h1 class="text-3xl font-extrabold tracking-tight text-slate-900 dark:text-white">統計學筆記</h1>
+          <p class="text-sm text-slate-600 dark:text-slate-400 font-medium mt-1">Quantative Research & Data Analysis</p>
+        </div>
+      </div>
+      <div class="flex items-center gap-3">
+         <button onclick="toggleDarkMode()" class="text-sm font-medium px-4 py-2 rounded-full bg-white/40 dark:bg-slate-700/40 hover:bg-white/60 backdrop-blur transition border border-white/20 shadow-sm">
+          🌗 夜間模式
+        </button>
+      </div>
     </header>
 
-    <a href="../../index.html" class="inline-block text-sm text-blue-700 dark:text-blue-300 hover:underline">← 回首頁</a>
+    <!-- 麵包屑導航 -->
+    <nav class="flex text-sm font-medium text-slate-500 dark:text-slate-400">
+      <a href="../../index.html" class="hover:text-blue-600 dark:hover:text-blue-400 transition flex items-center gap-1">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg>
+        首頁
+      </a>
+      <span class="mx-2 opacity-50">/</span>
+      <span class="text-slate-800 dark:text-slate-200">統計學</span>
+    </nav>
 
-    <section class="space-y-4">
-      <div class="glass p-6 rounded-xl shadow-md">
-        <h2 class="text-xl font-semibold mb-2">🧾 描述統計 Descriptive Statistics</h2>
-        <ul class="list-disc list-inside text-sm space-y-1">
-          <li><strong>平均數 Mean：</strong> 數據加總後除以樣本數。</li>
-          <li><strong>中位數 Median：</strong> 排序後的中間值，適合偏態分布。</li>
-          <li><strong>標準差 SD：</strong> 衡量數據離均差的平均程度。</li>
+    <!-- 分類濾鏡 -->
+    <div class="flex gap-2 overflow-x-auto pb-2 scrollbar-hide">
+      <button onclick="filterContent('all')" data-filter="all" class="filter-btn px-5 py-2 rounded-full bg-blue-100 text-blue-700 dark:bg-blue-900 dark:text-blue-300 font-bold text-sm shadow-sm transition whitespace-nowrap">
+        全部顯示
+      </button>
+      <button onclick="filterContent('basic')" data-filter="basic" class="filter-btn px-5 py-2 rounded-full bg-white/50 dark:bg-slate-700 text-gray-600 dark:text-gray-300 font-bold text-sm hover:bg-white/80 transition whitespace-nowrap">
+        基礎概念
+      </button>
+      <button onclick="filterContent('test')" data-filter="test" class="filter-btn px-5 py-2 rounded-full bg-white/50 dark:bg-slate-700 text-gray-600 dark:text-gray-300 font-bold text-sm hover:bg-white/80 transition whitespace-nowrap">
+        檢定方法
+      </button>
+    </div>
+
+    <!-- 內容卡片區 -->
+    <section class="grid md:grid-cols-2 gap-6">
+
+      <!-- 卡片 1: 描述統計 -->
+      <div class="note-card glass p-6 rounded-2xl group cursor-pointer relative overflow-hidden" data-category="basic">
+        <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition transform group-hover:scale-110">
+          <span class="text-6xl">📊</span>
+        </div>
+        <div class="flex items-center gap-3 mb-4">
+          <span class="badge badge-core">基礎概念</span>
+        </div>
+        <h2 class="text-xl font-bold mb-3 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition">描述統計 (Descriptive)</h2>
+        <ul class="space-y-2 text-sm text-slate-600 dark:text-slate-300">
+          <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-blue-400"></span>平均數 (Mean): \(\bar{X}\)</li>
+          <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-blue-400"></span>中位數 (Median): 抗極端值</li>
+          <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-blue-400"></span>標準差 (SD): 資料離散程度</li>
         </ul>
       </div>
 
-      <div class="glass p-6 rounded-xl shadow-md">
-        <h2 class="text-xl font-semibold mb-2">🧪 推論統計 Inferential Statistics</h2>
-        <ul class="list-disc list-inside text-sm space-y-1">
-          <li><strong>假設檢定 Hypothesis Testing：</strong> 評估樣本與母體是否存在顯著差異。</li>
-          <li><strong>p 值：</strong> 當 H₀ 成立時，觀察到現有樣本資料的機率。</li>
-          <li><strong>信賴區間 CI：</strong> 母體參數落於區間的機率（通常為 95%）。</li>
+      <!-- 卡片 2: 推論統計 -->
+      <div class="note-card glass p-6 rounded-2xl group cursor-pointer relative overflow-hidden" data-category="basic">
+        <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition transform group-hover:scale-110">
+          <span class="text-6xl">🧪</span>
+        </div>
+        <div class="flex items-center gap-3 mb-4">
+          <span class="badge badge-advance">核心理論</span>
+        </div>
+        <h2 class="text-xl font-bold mb-3 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition">推論統計 (Inferential)</h2>
+        <ul class="space-y-2 text-sm text-slate-600 dark:text-slate-300">
+          <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-pink-400"></span>假設檢定 (Hypothesis Testing)</li>
+          <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-pink-400"></span>p 值 (p-value): 拒絕 \(H_0\) 的證據強度</li>
+          <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-pink-400"></span>信賴區間 (CI): 估計參數範圍</li>
         </ul>
       </div>
 
-      <div class="glass p-6 rounded-xl shadow-md">
-        <h2 class="text-xl font-semibold mb-2">📊 常見檢定 Common Tests</h2>
-        <ul class="list-disc list-inside text-sm space-y-1">
-          <li><strong>t 檢定：</strong> 用於兩組平均數比較。</li>
-          <li><strong>ANOVA：</strong> 比較三組以上平均差異。</li>
-          <li><strong>卡方檢定：</strong> 類別變數的分布檢定。</li>
+      <!-- 卡片 3: 常見檢定 -->
+      <div class="note-card glass p-6 rounded-2xl group cursor-pointer relative overflow-hidden" data-category="test">
+        <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition transform group-hover:scale-110">
+          <span class="text-6xl">⚖️</span>
+        </div>
+        <div class="flex items-center gap-3 mb-4">
+          <span class="badge badge-tool">常用檢定</span>
+        </div>
+        <h2 class="text-xl font-bold mb-3 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition">差異比較檢定 (Tests)</h2>
+        <ul class="space-y-2 text-sm text-slate-600 dark:text-slate-300">
+          <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-green-400"></span>t-test: 比較兩組平均數</li>
+          <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-green-400"></span>ANOVA: 三組以上比較</li>
+          <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-green-400"></span>Chi-square: 類別變數關聯</li>
         </ul>
       </div>
 
-      <div class="glass p-6 rounded-xl shadow-md">
-        <h2 class="text-xl font-semibold mb-2">📊 這是測試資料 Common Tests</h2>
-        <ul class="list-disc list-inside text-sm space-y-1">
-          <li><strong>這是測試：</strong> 用於兩組平均數比較。</li>
-          <li><strong>ANOVA：</strong> 比較三組以上平均差異。</li>
-          <li><strong>卡方檢定：</strong> 類別變數的分布檢定。</li>
+      <!-- 卡片 4: 進階模型 -->
+      <div class="note-card glass p-6 rounded-2xl group cursor-pointer relative overflow-hidden" data-category="test">
+        <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition transform group-hover:scale-110">
+          <span class="text-6xl">📈</span>
+        </div>
+        <div class="flex items-center gap-3 mb-4">
+          <span class="badge badge-advance">進階模型</span>
+        </div>
+        <h2 class="text-xl font-bold mb-3 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition">迴歸與多變量</h2>
+        <ul class="space-y-2 text-sm text-slate-600 dark:text-slate-300">
+          <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-purple-400"></span>簡單/多元迴歸 (Regression)</li>
+          <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-purple-400"></span>中介與調節效果 (Mediation/Moderation)</li>
+          <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-purple-400"></span>結構方程模型 (SEM)</li>
         </ul>
       </div>
 
-      <div class="glass p-6 rounded-xl shadow-md">
-        <h2 class="text-xl font-semibold mb-2">📊 這是測試資料2 Common Tests</h2>
-        <ul class="list-disc list-inside text-sm space-y-1">
-          <li><strong>這是測試：</strong> 用於兩組平均數比較。</li>
-          <li><strong>ANOVA：</strong> 比較三組以上平均差異。</li>
-          <li><strong>卡方檢定：</strong> 類別變數的分布檢定。</li>
-        </ul>
-      </div>
-    
-    <button onclick="scrollToTop()" class="fixed bottom-6 right-6 bg-white/50 dark:bg-gray-700 rounded-full p-3 shadow hover:shadow-lg">
+    </section>
+
+    <button onclick="window.scrollTo({top:0, behavior: 'smooth'})" class="fixed bottom-8 right-8 bg-white/80 dark:bg-slate-700/80 p-3 rounded-full shadow-lg backdrop-blur hover:scale-110 transition z-50">
       ⬆️
     </button>
-  </section>
+
   </div>
 </body>
 </html>
